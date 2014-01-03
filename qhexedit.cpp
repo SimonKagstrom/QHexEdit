@@ -159,3 +159,8 @@ void QHexEdit::redo()
 {
     this->_hexedit_p->redo();
 }
+
+void QHexEdit::setFont(const QFont &font)
+{
+	this->_hexedit_p->setFont(font);
+}
