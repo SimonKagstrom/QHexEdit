@@ -464,7 +464,7 @@ void QHexEditPrivate::drawAddress(QPainter &painter, QFontMetrics &fm, qint64 li
     int lineMax = this->_hexeditdatamanager->length() / QHexEditDataManager::BYTES_PER_LINE;
     painter.fillRect(0, y, this->_xposhex - (this->_charwidth / 2), this->_charheight, this->_addressbackcolor);
 
-    if(line <= lineMax)
+    if(line < lineMax)
     {
         QString addr = QString("%1").arg(line * QHexEditDataManager::BYTES_PER_LINE, this->_addressWidth, 16, QLatin1Char('0')).toUpper();
 
