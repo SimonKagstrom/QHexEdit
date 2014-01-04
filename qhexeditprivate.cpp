@@ -534,7 +534,7 @@ void QHexEditPrivate::drawHexPart(QPainter &painter, QFontMetrics& fm, qint64 li
             }
         }
 
-        if(!highlighted && this->_highlightmap.contains(pos)) /* Highlight Range */
+        if(this->_highlightmap.contains(pos)) /* Highlight Range */
         {
             if(i < (lineLength - 1))
             {
