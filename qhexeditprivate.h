@@ -53,6 +53,10 @@ class QHexEditPrivate : public QWidget
         QColor& alternateLineColor();
         QBrush& selectedCursorBrush();
 
+        void setBaseAddress(qint64 base);
+
+        qint64 getBaseAddress();
+
     private:
         QColor byteWeight(uchar b);
         void setCursorPos(qint64 pos, int charidx);
@@ -114,6 +118,7 @@ class QHexEditPrivate : public QWidget
         int _charheight;
         bool _readonly;
         bool _blink;
+        qint64 _baseAddress;
 
     private slots:
         void blinkCursor();

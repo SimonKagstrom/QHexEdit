@@ -12,6 +12,7 @@ QHexEditPrivate::QHexEditPrivate(QScrollArea *scrollarea, QScrollBar *vscrollbar
     this->_selpart = HexPart;
     this->_cursorX = this->_cursorY = 0;
     this->_charheight = this->_charwidth = 0;
+    this->_baseAddress = 0;
 
     connect(this->_vscrollbar, SIGNAL(valueChanged(int)), this, SLOT(vScrollBarValueChanged(int)));
     connect(this->_vscrollbar, SIGNAL(valueChanged(int)), this, SIGNAL(verticalScrollBarValueChanged(int)));
@@ -466,7 +467,7 @@ void QHexEditPrivate::drawAddress(QPainter &painter, QFontMetrics &fm, qint64 li
 
     if(line < lineMax)
     {
-        QString addr = QString("%1").arg(line * QHexEditDataManager::BYTES_PER_LINE, this->_addressWidth, 16, QLatin1Char('0')).toUpper();
+        QString addr = QString("%1").arg(this->_baseAddress + line * QHexEditDataManager::BYTES_PER_LINE, this->_addressWidth, 16, QLatin1Char('0')).toUpper();
 
         painter.setBackgroundMode(Qt::TransparentMode);
         painter.setPen(this->_addressforecolor);
@@ -1079,4 +1080,14 @@ void QHexEditPrivate::hexEditDataChanged(qint64, qint64)
 {
     this->update();
     this->adjust();  /* Update ScrollBars */
+}
+
+void QHexEditPrivate::setBaseAddress(qint64 base)
+{
+    this->_baseAddress = base;
+}
+
+qint64 QHexEditPrivate::getBaseAddress()
+{
+	return this->_baseAddress;
 }

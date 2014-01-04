@@ -21,6 +21,10 @@ class QHexEdit : public QFrame
 
         void setFont(const QFont &);
 
+        void setBaseAddress(qint64 base);
+
+        qint64 getBaseAddress();
+
     signals:
         void positionChanged(qint64 offset);
         void selectionChanged(qint64 length);

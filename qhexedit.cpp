@@ -85,6 +85,16 @@ void QHexEdit::resetRangeColor()
     this->_hexedit_p->resetRangeColor();
 }
 
+void QHexEdit::setBaseAddress(qint64 base)
+{
+    this->_hexedit_p->setBaseAddress(base);
+}
+
+qint64 QHexEdit::getBaseAddress()
+{
+	return this->_hexedit_p->getBaseAddress();
+}
+
 void QHexEdit::setVerticalScrollBarValue(int value)
 {
     this->_hexedit_p->setVerticalScrollBarValue(value);
